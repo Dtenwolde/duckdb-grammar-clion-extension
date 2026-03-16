@@ -1,0 +1,60 @@
+com.duckdb.gram:1.0.0
++--- com.intellij.cidr.lang:251.25410.104
+|    +--- com.intellij.cidr.base:251.25410.104
+|    |    +--- com.intellij:251.25410.104
+|    |    |    +--- (failed) dependency on plugin 'com.intellij.platform.experimental.backend' declared in content module 'intellij.platform.rpc.backend' of 'com.intellij': Dependency 'dependency on plugin 'com.intellij.platform.experimental.backend' declared in content module 'intellij.platform.rpc.backend' of 'com.intellij'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    +--- (failed) dependency on plugin 'com.intellij.platform.experimental.frontend' declared in content module 'intellij.platform.searchEverywhere.frontend' of 'com.intellij': Dependency 'dependency on plugin 'com.intellij.platform.experimental.frontend' declared in content module 'intellij.platform.searchEverywhere.frontend' of 'com.intellij'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    +--- (optional) Git4Idea:251.25410.104
+|    |    |    |    +--- com.intellij:251.25410.104:com.intellij (*) [declaring module intellij.platform.collaborationTools]
+|    |    |    |    +--- (optional) com.jetbrains.performancePlugin:251.25410.104
+|    |    |    |    |    \--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |    \--- (optional) org.jetbrains.plugins.terminal:251.25410.104
+|    |    |    |         +--- (failed) dependency on plugin 'com.intellij.platform.experimental.backend' declared in content module 'intellij.terminal.backend' of 'org.jetbrains.plugins.terminal': Dependency 'dependency on plugin 'com.intellij.platform.experimental.backend' declared in content module 'intellij.platform.rpc.backend' of 'com.intellij'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |         +--- (failed) dependency on plugin 'com.intellij.platform.experimental.frontend' declared in content module 'intellij.terminal.frontend' of 'org.jetbrains.plugins.terminal': Dependency 'dependency on plugin 'com.intellij.platform.experimental.frontend' declared in content module 'intellij.platform.searchEverywhere.frontend' of 'com.intellij'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |         +--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |         \--- (optional) com.jetbrains.sh:251.25410.104
+|    |    |    |              +--- (failed) dependency on plugin 'com.intellij.modules.python' declared in content module 'intellij.sh.python' of 'com.jetbrains.sh': Dependency 'dependency on plugin 'com.intellij.modules.python' declared in content module 'intellij.sh.python' of 'com.jetbrains.sh'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |              +--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              +--- (optional) com.intellij.copyright:251.25410.104
+|    |    |    |              |    \--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              +--- (optional) org.intellij.plugins.markdown:251.25410.104
+|    |    |    |              |    +--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              |    +--- (optional) com.intellij.modules.json:251.25410.104
+|    |    |    |              |    |    \--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              |    +--- (optional) com.intellij.platform.images:251.25410.104
+|    |    |    |              |    |    \--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              |    +--- (optional) org.intellij.intelliLang:251.25410.104
+|    |    |    |              |    |    +--- (failed) ProxyModulePluginDependency(id=com.intellij.modules.java, isOptional=true): Dependency 'ProxyModulePluginDependency(id=com.intellij.modules.java, isOptional=true)' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |              |    |    +--- (optional) XPathView:251.25410.104
+|    |    |    |              |    |    |    \--- com.intellij:251.25410.104:com.intellij (*)
+|    |    |    |              |    |    \--- (optional) com.intellij:251.25410.104:com.intellij (*)
+|    |    |    |              |    +--- (optional) org.toml.lang:251.25410.104
+|    |    |    |              |    |    +--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              |    |    +--- (optional) com.intellij.modules.json:251.25410.104:com.intellij.modules.json (*)
+|    |    |    |              |    |    \--- (optional) tanvd.grazi:251.25410.104
+|    |    |    |              |    |         +--- (failed) dependency on plugin 'com.intellij.java' declared in content module 'intellij.grazie.java' of 'tanvd.grazi': Dependency 'dependency on plugin 'com.intellij.java' declared in content module 'intellij.grazie.java' of 'tanvd.grazi'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |              |    |         +--- com.intellij:251.25410.104:com.intellij (*) [declaring module intellij.platform.vcs.impl]
+|    |    |    |              |    |         +--- (optional) com.intellij.modules.json:251.25410.104:com.intellij.modules.json (*)
+|    |    |    |              |    |         +--- (optional) com.intellij.properties:251.25410.158
+|    |    |    |              |    |         |    +--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.xml]
+|    |    |    |              |    |         |    \--- (optional) com.intellij.copyright:251.25410.104:com.intellij.copyright (*)
+|    |    |    |              |    |         +--- (optional) org.intellij.plugins.markdown:251.25410.104:org.intellij.plugins.markdown (*)
+|    |    |    |              |    |         \--- (optional) intellij.yaml.backend:<empty version> [declaring module intellij.yaml.backend]
+|    |    |    |              |    |              +--- (failed) com.intellij.platform.experimental.backend (plugin, v2): Dependency 'dependency on plugin 'com.intellij.platform.experimental.backend' declared in content module 'intellij.platform.rpc.backend' of 'com.intellij'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |              |    |              +--- com.intellij.modules.json:251.25410.104:com.intellij.modules.json (*) [declaring module com.intellij.modules.json]
+|    |    |    |              |    |              +--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              |    |              \--- org.jetbrains.plugins.yaml:251.25410.104 [declaring module intellij.yaml]
+|    |    |    |              |    |                   +--- (failed) dependency on plugin 'com.intellij.jetbrains.client' declared in content module 'intellij.yaml.frontend.split' of 'org.jetbrains.plugins.yaml': Dependency 'dependency on plugin 'com.intellij.jetbrains.client' declared in content module 'intellij.yaml.frontend.split' of 'org.jetbrains.plugins.yaml'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |              |    |                   +--- (failed) dependency on plugin 'com.intellij.platform.experimental.backend' declared in content module 'intellij.yaml.backend' of 'org.jetbrains.plugins.yaml': Dependency 'dependency on plugin 'com.intellij.platform.experimental.backend' declared in content module 'intellij.platform.rpc.backend' of 'com.intellij'' is not resolved. It was searched in the following locations: Local Plugin Repository, Bundled plugins of CL-251.25410.104, JetBrains Marketplace https://plugins.jetbrains.com
+|    |    |    |              |    |                   +--- com.intellij:251.25410.104:com.intellij (*) [declaring module com.intellij.modules.lang]
+|    |    |    |              |    |                   \--- com.intellij.modules.json:251.25410.104:com.intellij.modules.json (*) [declaring module intellij.json.split]
+|    |    |    |              |    \--- (optional) intellij.yaml.backend:<empty version>:intellij.yaml.backend (*) [declaring module intellij.yaml.backend]
+|    |    |    |              \--- (optional) org.jetbrains.plugins.terminal:251.25410.104:org.jetbrains.plugins.terminal (*)
+|    |    |    +--- (optional) com.intellij.copyright:251.25410.104:com.intellij.copyright (*)
+|    |    |    \--- (optional) com.intellij.platform.images:251.25410.104:com.intellij.platform.images (*)
+|    |    \--- com.intellij.nativeDebug:251.25410.104
+|    |         +--- com.intellij:251.25410.104:com.intellij (*)
+|    |         \--- com.intellij.platform.images:251.25410.104:com.intellij.platform.images (*)
+|    +--- com.intellij:251.25410.104:com.intellij (*)
+|    \--- (optional) org.jetbrains.plugins.yaml:251.25410.104:org.jetbrains.plugins.yaml (*)
+\--- com.intellij:251.25410.104:com.intellij (*)

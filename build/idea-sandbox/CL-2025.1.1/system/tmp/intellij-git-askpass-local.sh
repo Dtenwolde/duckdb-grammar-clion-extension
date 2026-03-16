@@ -1,0 +1,2 @@
+#!/bin/sh
+"/Users/danieltenwolde/.gradle/caches/transforms-4/a5bf28767770be16ad4ccee8b643584d/transformed/CLion-2025.1.1-aarch64/jbr/Contents/Home/bin/java" -cp "/Users/danieltenwolde/.gradle/caches/transforms-4/a5bf28767770be16ad4ccee8b643584d/transformed/CLion-2025.1.1-aarch64/plugins/vcs-git/lib/git4idea-rt.jar:/Users/danieltenwolde/.gradle/caches/transforms-4/a5bf28767770be16ad4ccee8b643584d/transformed/CLion-2025.1.1-aarch64/lib/externalProcess-rt.jar" git4idea.http.GitAskPassApp "$@"

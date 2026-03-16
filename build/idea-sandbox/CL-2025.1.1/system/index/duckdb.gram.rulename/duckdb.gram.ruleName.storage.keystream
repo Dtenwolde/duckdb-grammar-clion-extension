@@ -1,0 +1,61 @@
+AlterOptionsAlterTableStmtAlterStatementAlterDatabaseStmtAlterViewStmtAlterSequenceStmtQualifiedSequenceNameAlterSequenceOptionsSetSequenceOptionAlterTableOptions	AddColumnAddColumnEntry
+DropColumnAlterColumnAlterColumnEntryDropDefaultChangeNullability	AlterTypeUsingExpression	DropOrSetAddOrDropDefault
+AddDefaultRenameColumnRenameAlterSetPartitionedByResetPartitionedByAddConstraintSequenceNameSetSortedByResetSortedBy
+SetOptionsResetOptions	UseTargetUseStatementSetAssignment
+SetSettingGlobalScopeStandardAssignmentVariableAssignSettingScopeSessionScopeSetStatementVariableListResetStatementSetTimeZoneVariableScopeSetVariable
+LocalScopeFromOrTo
+StarSymbolNullAsOptionSpecializedOptionCopyFromDatabaseEncodingOptionCopyDatabaseFlagHeaderOption
+OidsOption
+CopySchemaCopyOptionsQuoteAsOptionGenericCopyOptionForceNullOptionCopyStatement	CsvOptionBinaryOptionGenericCopyOptionList
+CopySelectEscapeAsOptionSpecializedOptionListPartitionByOption	CopyTableFreezeOptionCopyDataForceQuoteOptionDelimiterAsOptionCopyFileNameSingleOptionSchemaOrDataCallStatementLoadStatementInstallStatement
+FromSourceUpdateExtensionsStatementVersionNumberQualifiedIndexNameDropCollationMaterializedViewEntryIfExists
+DropSecretFunctionTypeDropTableFunctionDropSequence	DropTable
+DropSchemaTableOrViewDropBehaviorDropSecretStorageDropTypeQualifiedSchemaNameDropStatement	DropIndexDropFunctionDropEntriesNestedColumnNameSetDataAlterSchemaStmtIncludeNullsIncludeOrExcludeNullsPivotColumnEntryInternalPivotStatementUnpivotHeaderPivotKeywordPivotColumnEntryIntoNameValuesPivotColumnSubqueryPivotColumnListUnpivotKeywordPivotOnUnpivotHeaderSingleUnpivotHeaderList
+PivotUsingValueOrValuesExcludeNullsUnpivotStatement	UnionTypeConstraintNameReservedTableNameIntervalTypeSimpleNumericTypeCharacterTypeRealTypeMapType	FloatType	IndexNameFunctionNameYearKeywordGeometryType	ColIdTypeArrayBoundsListMillenniumKeywordTimestampTypeIdWithoutRuleTimeOrTimestampDecTypeHourKeywordDecadeKeywordWithOrWithoutTableFunctionNameMicrosecondKeywordQualifiedTypeNameMillisecondKeyword
+BigintTypeNumericModType
+SecretName	TableNameTimeZoneColIdTypeListStringLiteralMinuteKeywordMonthKeywordDecimalTypeIntervalNumberIntervalNumericTypeArrayKeyword
+DayKeywordWithRuleSettingNameParensVariantTypeWeekKeywordReservedSchemaNameRowTypeCenturyKeywordQuarterKeywordCopyOptionNameDecimalNumericTypeIntTypeTimeTypeSecondKeyword
+SimpleTypeReservedColumnNameReservedIdentifierRowOrStructBitType
+TimeTypeIdSmallintType
+PragmaNameTypeModifiersCollationName	StatementBooleanTypeIntervalIntervalSquareBracketsArrayIntegerType
+ColumnNameType
+DoubleTypeCatalogName	SetofType
+whitespace
+SchemaNameReservedFunctionNameNumberLiteralAttachOptionsDatabaseAttachStatementDatabasePathAttachAliasDeleteUsingClauseTargetOptAliasDeleteStatementTruncateStatementDetachStatementExportStatementImportStatementExportSourceBaseTableAliasSetUpdateSetClauseUpdateSetElementUpdateStatementUpdateSetElementListUpdateTargetUpdateAliasUpdateSetTupleBaseTableSetVacuumOptionsNameListVacuumStatementVacuumParensOptions	OptFreeze
+OptVerboseVacuumOptionVacuumLegacyOptionsOptFull
+OptAnalyzeAnalyzeTargetAnalyzeStatementCommentValueCommentStatementCommentDatabaseCommentIndexCommentFunctionCommentMacroTableCommentViewCommentSchemaCommentTypeCommentOnTypeCommentSequenceCommentColumnCommentTableCommentMacroExecuteStatementExplainStatementExplainableStatementsOnConflictClauseOnConflictActionReturningClauseInsertByNameOnConflictExpressionTargetInsertTargetInsertStatementOrActionInsertAliasOnConflictUpdateOnConflictTargetInsertColumnListInsertValuesByNameOrPositionDefaultValues
+ColumnListInsertByPositionOnConflictIndexTargetOnConflictNothingPragmaStatementPragmaAssignPragmaParametersPragmaFunctionIntervalLiteralOtherOperatorExpressionExcludeCurrentRowIgnoreOrRespectNullsInExpressionDistinctOrAllWindowPartitionBetweenInLikeOpCollateOperatorCastOperatorListComprehensionFilterAnyOp
+NotILikeOpSubstringExpressionListListOperator	NotLikeOpStructExpressionWindowFrameFilterClause
+TrimSourceEndSliceBoundSubstringParametersMultiplicativeExpressionPlusPrefixOperatorAdditiveExpressionPositionalExpressionSubstringExpressionBoundedListExpressionCaseWhenThen
+FrameBoundListExpression
+RenameListIsDistinctFromOpOperatorGreaterThanTableReservedColumnNameMethodExpressionLambdaArrowExpressionNotSimilarToOpReplaceEntriesTrimTrailingFunctionIdentifierComparisonExpressionPrefixExpressionWindowExcludeElementOperatorLessThanCollateExpressionNullLiteralLambdaExpressionBitwiseExpressionColumnReferenceBetweenFrameExtent
+LikeClauseLogicalAndExpressionFrameUnboundedWindowFrameNameContentsParensCastOrTryCastFrameClauseParensExpressionWithinGroupClauseExcludeGroupSingleRenameEntryTrimExpressionTypeLiteralIsDistinctFromExpressionTrimBothSingleFrameExtentReplaceListPrecedingOrFollowing
+ILikeTokenExcludeListMapExpressionPrefixOperatorTrimDirectionSingleExpressionQualifiedOperatorTryExpression
+SliceBoundInExpressionListAnyOrAllDotOperatorGroupingOrGroupingIdPostfixOperator
+ExpressionWindowFrameContentsParens	ParameterSubqueryAnyAnonymousParameterExcludeNameAnyAllOperatorCoalesceExpressionColLabelParameterAtTimeZoneOperatorColumnsExpressionExtractArgumentInClauseExponentiationExpression
+OverClauseOperatorNotEqualSubqueryAllSliceExpressionBetweenInLikeExpressionTrimLeadingCaseExpressionExportClauseInetOperatorStarExpressionGroupingExpression	LikeTokenJsonOperatorFactorIntervalParameter	GlobTokenOperatorLessThanEqualsWindowFrameContentsMapStructFieldListComprehensionExpressionRespectNullsMinusPrefixOperatorExcludeTiesTildePrefixOperatorLiteralExpressionFrameExtentNumberedParameterLogicalNotExpressionTermBetweenClauseBitOperatorLikeVariationsEscapeClauseCaseElseIsExpressionExponentOperatorStepSliceBoundSchemaReservedTableColumnNameStringOperatorOperatorEqualCastExpressionExcludeNameSingleIndirectionBaseExpressionBaseWindowNameComparisonOperatorWindowExcludeClause$CatalogReservedSchemaTableColumnName	IsLiteralExtractExpressionLogicalOrExpressionParensIdentifierFramingNotNullInSelectStatementFalseLiteralSubqueryExpressionUnknownLiteralFunctionExpressionReplaceEntryListStructFieldTrueLiteralIgnoreNullsWindowFrameDefinitionFrameExpressionOperatorGreaterThanEqualsPositionExpressionExcludeNameListSubstringArgumentsExcludeNoOthersRenameEntryFrameCurrentRowArrayBoundedListExpressionLambdaOperatorConstantLiteralParenthesisExpressionReplaceEntryRenameEntryListRowExpressionArrayParensSelectAtTimeZoneExpressionReplaceEntrySingleUnpackExpressionIsTest!CatalogReservedSchemaFunctionNameNullIfExpressionDefaultExpressionIsNullOtherOperatorSpecialFunctionExpressionMapStructExpressionSimilarToTokenSchemaReservedFunctionNameMergeIntoUsingClauseMergeIntoStatementInsertDefaultValuesBySourceInsertByNameOrPositionInsertValuesListErrorMatchClauseByTargetUpdateMatchInfoDeleteMatchClauseInsertMatchClauseUpdateMatchSetClause
+MergeMatchInsertMatchInfoDoNothingMatchClauseAndExpressionMatchedClauseMatchedClauseActionUpdateMatchClauseNotMatchedClauseBySourceOrTargetSetopClauseSelectClauseAtUnit
+SampleSeedResultModifiers
+GroupByAllWhereClauseGroupByListWindowClauseAliasedExpressionTablePivotClauseTableUnpivotClauseNamedParameterAssignmentSemiJoinBaseTableRefFunctionArgumentValuesClauseUnpivotValueList
+TargetListTableFunctionArgumentsUsingClauseNamedParameterSimpleSelectParensWithStatement	ValuesRefCrossJoinPrefix
+SampleUnit
+TableAliasAntiJoinColIdExpressionOrderByExpressionBaseTableNameUnpivotTargetListWindowDefinitionSamplePercentageFromSelectClauseLimitAllOffsetLimitClause
+SetopUnionSelectStatementDistinctOnTargetsAtClauseFullJoinOrderByClauseGroupByClause
+JoinPrefixNaturalJoinPrefixTableFunctionSampleEntryCountQualifiedTableFunctionColumnAliasesDescendingOrderAtSpecifierRepeatableSampleExpressionOptIdentifierSamplePropertiesSampleClause	SetopTypeWithOrdinalityTableStatementIntersectChain
+DistinctOn
+OrderByAllTableAliasAsSelectStatementInternalCubeOrRollup
+NullsFirst	InnerJoin
+FromClauseHavingClauseRegularJoinClause	RowOrRowsLimitOffsetTableRefJoinOrPivotTableFunctionLateralOptEmptyGroupingItemPivotValueListLimitOffsetClauseAscendingOrderSelectSetOpChainOffsetValuePivotGroupByListOnClauseOffsetClauseDistinctAll
+SelectAtomSetopExceptPositionalJoinPrefixSampleCount
+SampleRowsCubeOrRollupClauseValuesExpressions
+LimitValueSelectParens	RightJoinUsingSampleLimitClauseSetIntersectClauseLimitExpressionQualifyClauseTableAliasColonSampleFunctionOptionalParensSimpleSelectGroupByExpressionsNullsFirstOrLastLeftJoin	DescOrAscSelectStatementTypeSchemaReservedTableSimpleSelectCatalogReservedSchemaTableLimitLiteralPercentUsingKeySampleValue	NullsLastByNameJoinQualifierDistinctClauseSampleEntryExpressionAsCollabelGroupByExpressionOrderByExpressionListGroupingSetsClauseParensTableRefTableAliasWithoutAsInnerTableRefJoinWithoutOnClauseLateralTableFunctionAliasColonJoinTypeTableSampleSelectFromClauseMaterializedTableSubqueryOrderByExpressions
+SelectFromPivotTargetListSubqueryReferenceSampleEntryFunction	Recursive
+JoinClause
+WithClausePivotHeaderEnumSelectTypeEnumStringLiteralList
+CreateTypeCreateTypeStmtCreateViewStmtCreateMacroStmtMacroOrFunctionMacroParameterMacroParametersSimpleParameterMacroDefinitionTableMacroDefinitionScalarMacroDefinitionWithListCreateIndexStmtRelOptionOrOidsNoneLiteralOidsRelOptionNameIndexElementRelOptionArgumentOptReservedKeywordValueDefArgUniqueRelOptionList	IndexType	RelOptionTopUniqueConstraintColumnIdListTypeNameSchemaQualificationIfNotExistsConstraintNameClauseIdentifierListCreateTableColumnListAlwaysOrByDefaultTemporaryPersistentSortedOptPartitionOptionsCreateTableColumnElementCreateTableAs
+IdentifierColumnCompressionDottedIdentifierCreateStatementVariation!ReservedIdentifierOrStringLiteralPartitionSortedOptionsReservedSchemaQualification	KeyActionColLabelNotNullConstraintCheckConstraintQualifiedNameTempPersistentTopPrimaryKeyConstraintReservedTableQualificationPrimaryKeyConstraintPlainIdentifierColumnCollationSetNullKeyActionDeleteActionColIdOrStringCatalogQualificationCatalogReservedSchemaIdentifierCommitActionTableQualificationCreateColumnListTopForeignKeyConstraintSetDefaultKeyActionNoKeyActionRestrictKeyActionCreateStatementForeignKeyConstraintCascadeKeyActionPreserveOrDeleteUniqueConstraintGeneratedColumnTypeCreateTableStmtPartitionOptionsDefaultValueColLabelOrStringSortedOptions
+KeyActionsColumnConstraint	GeneratedUpdateActionTopLevelConstraint	OrReplace
+Persistent'SchemaReservedIdentifierOrStringLiteralColumnDefinitionQuotedIdentifierWithDataGeneratedColumnTopLevelConstraintList	TemporaryTypeFuncNameIdentifierOrStringLiteralPartitionOptSortedOptionsColIdCreateSchemaStmtBeginTransactionReadOnlyCommitTransactionStartOrBeginTransactionReadOrWriteCommitOrEndReadOnlyOrReadWriteTransactionStatement	ReadWriteAbortOrRollbackRollbackTransactionSeqSetIncrementSeqNoMinMaxSequenceOptionSeqSetMinMax
+SeqOwnedBySeqSetCycleCreateSequenceStmtMinValueMaxValueSeqStartWithSeqMinOrMaxCreateSecretStmtSecretStorageSpecifierPrepareStatementTypeListShowOrDescribeOrSummarize
+ShowSelectDescribeStatement
+ShowTablesDescribeRuleSummarizeRuleShowAllTablesShowQualifiedName	SummarizeShowOrDescribeShowRuleDeallocateStatementCheckpointStatement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     

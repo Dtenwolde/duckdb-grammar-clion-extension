@@ -1,0 +1,10 @@
+<ivy-module version="2.0">
+  <info organisation="bundledPlugin" module="com.intellij.cidr.base" revision="CL-251.25410.104"/>
+  <configurations>
+    <conf name="default" visibility="public"/>
+  </configurations>
+  <publications>
+    <artifact name="cidr-base-plugin" ext="jar" conf="default" url="plugins/cidr-base-plugin/lib"/>
+  </publications>
+  <dependencies/>
+</ivy-module>
