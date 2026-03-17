@@ -53,8 +53,7 @@ class GramLexerTest : LexerTestCase() {
             SEPARATOR ('<-')
             WHITE_SPACE (' ')
             LITERAL (''x'')
-            WHITE_SPACE ('
-            ')
+            WHITE_SPACE ('\n')
             RULE_NAME ('b')
             WHITE_SPACE (' ')
             SEPARATOR ('<-')
@@ -164,12 +163,57 @@ class GramLexerTest : LexerTestCase() {
             REFERENCE ('a')
             WHITE_SPACE (' ')
             CHOICE ('/')
-            WHITE_SPACE ('
-                ')
+            WHITE_SPACE ('\n    ')
             REFERENCE ('b')
 
             """.trimIndent(),
             tokens("rule <- a /\n    b")
+        )
+    }
+
+    fun testRuleBodyStartsOnNextLine() {
+        // Rule body starting on the line after '<-' must not treat the first
+        // identifier as a new rule name.
+        assertEquals(
+            """
+            RULE_NAME ('rule')
+            WHITE_SPACE (' ')
+            SEPARATOR ('<-')
+            WHITE_SPACE ('\n    ')
+            REFERENCE ('a')
+            WHITE_SPACE (' ')
+            CHOICE ('/')
+            WHITE_SPACE (' ')
+            REFERENCE ('b')
+
+            """.trimIndent(),
+            tokens("rule <-\n    a / b")
+        )
+    }
+
+    fun testRuleBodyNextLineLeadingChoices() {
+        // The exact pattern from the DuckDB grammar: '<-' on the rule name line,
+        // each alternative on its own line starting with '/'.
+        assertEquals(
+            """
+            RULE_NAME ('SingleExpression')
+            WHITE_SPACE (' ')
+            SEPARATOR ('<-')
+            WHITE_SPACE ('\n    ')
+            REFERENCE ('ParensExpression')
+            WHITE_SPACE ('\n')
+            WHITE_SPACE ('    ')
+            CHOICE ('/')
+            WHITE_SPACE (' ')
+            REFERENCE ('LiteralExpression')
+            WHITE_SPACE ('\n')
+            WHITE_SPACE ('    ')
+            CHOICE ('/')
+            WHITE_SPACE (' ')
+            REFERENCE ('Parameter')
+
+            """.trimIndent(),
+            tokens("SingleExpression <-\n    ParensExpression\n    / LiteralExpression\n    / Parameter")
         )
     }
 
@@ -183,13 +227,13 @@ class GramLexerTest : LexerTestCase() {
             SEPARATOR ('<-')
             WHITE_SPACE (' ')
             REFERENCE ('a')
-            WHITE_SPACE ('
-                ')
+            WHITE_SPACE ('\n')
+            WHITE_SPACE ('    ')
             CHOICE ('/')
             WHITE_SPACE (' ')
             REFERENCE ('b')
-            WHITE_SPACE ('
-                ')
+            WHITE_SPACE ('\n')
+            WHITE_SPACE ('    ')
             CHOICE ('/')
             WHITE_SPACE (' ')
             REFERENCE ('c')
@@ -271,8 +315,7 @@ class GramLexerTest : LexerTestCase() {
         assertEquals(
             """
             COMMENT ('# this is a comment')
-            WHITE_SPACE ('
-            ')
+            WHITE_SPACE ('\n')
             RULE_NAME ('rule')
             WHITE_SPACE (' ')
             SEPARATOR ('<-')

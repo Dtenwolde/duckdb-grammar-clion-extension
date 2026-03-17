@@ -15,6 +15,7 @@ import com.intellij.psi.tree.IElementType
  *   bits 0-1: parse state (0=RULE_NAME, 1=RULE_SEPARATOR, 2=RULE_DEFINITION)
  *   bits 2-7: bracket count (max 63 — grammar never nests that deep)
  *   bit  8:   inOrClause flag
+ *   bit  9:   ruleBodyEmpty flag (set after '<-', cleared on first body token)
  */
 class GramLexer : LexerBase() {
 
@@ -23,12 +24,16 @@ class GramLexer : LexerBase() {
         const val S_RULE_SEPARATOR  = 1
         const val S_RULE_DEFINITION = 2
 
-        fun encodeState(state: Int, bracketCount: Int, inOrClause: Boolean): Int =
-            (state and 0x3) or ((bracketCount and 0x3F) shl 2) or (if (inOrClause) 0x100 else 0)
+        fun encodeState(state: Int, bracketCount: Int, inOrClause: Boolean, ruleBodyEmpty: Boolean = false): Int =
+            (state and 0x3) or
+            ((bracketCount and 0x3F) shl 2) or
+            (if (inOrClause) 0x100 else 0) or
+            (if (ruleBodyEmpty) 0x200 else 0)
 
-        fun decodeState(packed: Int)        = packed and 0x3
-        fun decodeBracketCount(packed: Int) = (packed shr 2) and 0x3F
-        fun decodeInOrClause(packed: Int)   = (packed and 0x100) != 0
+        fun decodeState(packed: Int)          = packed and 0x3
+        fun decodeBracketCount(packed: Int)   = (packed shr 2) and 0x3F
+        fun decodeInOrClause(packed: Int)     = (packed and 0x100) != 0
+        fun decodeRuleBodyEmpty(packed: Int)  = (packed and 0x200) != 0
     }
 
     private var buffer: CharSequence = ""
@@ -80,6 +85,7 @@ class GramLexer : LexerBase() {
         var parseState    = decodeState(packedState)
         var bracketCount  = decodeBracketCount(packedState)
         var inOrClause    = decodeInOrClause(packedState)
+        var ruleBodyEmpty = decodeRuleBodyEmpty(packedState)
 
         val c = ch(pos)
 
@@ -88,18 +94,27 @@ class GramLexer : LexerBase() {
             while (pos < bufferEnd && ch(pos) != '\n' && ch(pos) != '\r') pos++
             tokenEnd = pos
             tokenType = GramTokenTypes.COMMENT
-            packedState = encodeState(parseState, bracketCount, inOrClause)
+            packedState = encodeState(parseState, bracketCount, inOrClause, ruleBodyEmpty)
             return
         }
 
         // Handle newlines as rule terminators in RULE_DEFINITION
         if (parseState == S_RULE_DEFINITION && (c == '\n' || c == '\r')) {
             if (bracketCount == 0 && !inOrClause) {
-                // consume the newline(s) and reset to RULE_NAME
-                while (pos < bufferEnd && (ch(pos) == '\n' || ch(pos) == '\r')) pos++
-                tokenEnd = pos
-                tokenType = GramTokenTypes.WHITE_SPACE
-                packedState = encodeState(S_RULE_NAME, 0, false)
+                if (ruleBodyEmpty) {
+                    // No body content yet (newline immediately after '<-') — stay in RULE_DEFINITION.
+                    // Consume all following whitespace so the body can start on the next line.
+                    while (pos < bufferEnd && (ch(pos) == '\n' || ch(pos) == '\r' || ch(pos) == ' ' || ch(pos) == '\t')) pos++
+                    tokenEnd = pos
+                    tokenType = GramTokenTypes.WHITE_SPACE
+                    packedState = encodeState(S_RULE_DEFINITION, 0, false, ruleBodyEmpty = true)
+                } else {
+                    // Normal rule termination — consume the newline(s) and reset to RULE_NAME.
+                    while (pos < bufferEnd && (ch(pos) == '\n' || ch(pos) == '\r')) pos++
+                    tokenEnd = pos
+                    tokenType = GramTokenTypes.WHITE_SPACE
+                    packedState = encodeState(S_RULE_NAME, 0, false)
+                }
                 return
             } else {
                 // multi-line rule continuation — treat as whitespace, keep state
@@ -107,7 +122,7 @@ class GramLexer : LexerBase() {
                 tokenEnd = pos
                 tokenType = GramTokenTypes.WHITE_SPACE
                 // After a newline in or-clause, the or-clause persists until next real token
-                packedState = encodeState(parseState, bracketCount, inOrClause)
+                packedState = encodeState(parseState, bracketCount, inOrClause, ruleBodyEmpty)
                 return
             }
         }
@@ -117,7 +132,7 @@ class GramLexer : LexerBase() {
             while (pos < bufferEnd && (ch(pos) == ' ' || ch(pos) == '\t' || ch(pos) == '\n' || ch(pos) == '\r')) pos++
             tokenEnd = pos
             tokenType = GramTokenTypes.WHITE_SPACE
-            packedState = encodeState(parseState, bracketCount, inOrClause)
+            packedState = encodeState(parseState, bracketCount, inOrClause, ruleBodyEmpty)
             return
         }
 
@@ -171,7 +186,8 @@ class GramLexer : LexerBase() {
                     pos += 2
                     tokenEnd = pos
                     tokenType = GramTokenTypes.SEPARATOR
-                    packedState = encodeState(S_RULE_DEFINITION, 0, false)
+                    // Mark ruleBodyEmpty=true — body hasn't started yet
+                    packedState = encodeState(S_RULE_DEFINITION, 0, false, ruleBodyEmpty = true)
                 } else {
                     pos++
                     tokenEnd = pos
@@ -181,7 +197,8 @@ class GramLexer : LexerBase() {
             }
 
             S_RULE_DEFINITION -> {
-                inOrClause = false   // will be set explicitly if needed below
+                inOrClause    = false  // will be set explicitly if needed below
+                ruleBodyEmpty = false  // first real token clears the empty-body flag
 
                 when {
                     c == '\'' -> {
