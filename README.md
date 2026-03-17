@@ -8,7 +8,10 @@ A CLion plugin that provides IDE support for [DuckDB](https://duckdb.org/)'s PEG
 - **Go to Definition** — `Cmd+Click` or `F12` on any rule reference navigates to its definition, across files
 - **Find Usages** — find all references to a grammar rule across the project
 - **Grammar → Transformer navigation** — gutter icons on grammar rules that have a corresponding C++ transformer; clicking navigates directly to the `PEGTransformerFactory::Transform<Rule>` method in the relevant `transform_*.cpp` file
-- **Transformer → Grammar navigation** — reverse gutter icons in C++ files link back to the grammar rule
+- **Transformer → Grammar navigation** — reverse gutter icons in C++ transformer files link back to the grammar rule
+- **Structure view** — `Cmd+7` shows all grammar rules in the file structure panel, with alphabetic sorting available
+- **Code folding** — multi-line rule bodies can be collapsed via the gutter fold indicator or `Cmd+.`; the placeholder shows the first line of the body
+- **Commenter** — `Cmd+/` toggles `#` line comments
 
 ## Installation
 
@@ -94,9 +97,11 @@ src/main/kotlin/com/duckdb/gram/
 ├── lexer/          # Hand-written stateful lexer (three-state machine)
 ├── parser/         # Light PSI parser
 ├── psi/            # PSI element types (GramRule, GramRuleRef, …)
-├── highlighting/   # Syntax highlighter and colour settings page
+├── highlighting/   # Syntax highlighter, colour settings page, and commenter
+├── folding/        # Code folding for multi-line rule bodies
+├── structure/      # Structure view (file outline of grammar rules)
 ├── reference/      # Go-to-Definition via file-based index
-├── index/          # GramRuleNameIndex (maps rule names → files)
+├── index/          # GramRuleNameIndex and TransformerMethodIndex
 ├── usage/          # Find Usages provider
 ├── navigation/     # Gutter icon providers (grammar ↔ C++ transformer)
 └── icons/          # SVG icons
