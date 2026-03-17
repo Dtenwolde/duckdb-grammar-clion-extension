@@ -49,5 +49,10 @@ echo "Publishing version $PLUGIN_VERSION to JetBrains Marketplace..."
 
 ./gradlew clean buildPlugin verifyPlugin publishPlugin
 
+TAG="v$PLUGIN_VERSION"
+echo "Tagging release $TAG..."
+git tag "$TAG"
+git push origin "$TAG"
+
 echo
-echo "Successfully published version $PLUGIN_VERSION."
+echo "Successfully published version $PLUGIN_VERSION and pushed tag $TAG."
