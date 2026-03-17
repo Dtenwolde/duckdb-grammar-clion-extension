@@ -1,9 +1,0 @@
-Plugin ID: com.duckdb.gram
-Plugin Version: 1.0.0
-Descriptor parsed in: 169 ms
-Descriptor parsed (raw ms): 169
-Plugin size (bytes): 1633410
-Verified classes in plugin artifact: 31
-Verification time: 5 s 789 ms
-Verification time (raw ms): 5789
-

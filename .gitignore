@@ -1,0 +1,15 @@
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA / CLion project files
+.idea/
+
+# IntelliJ Platform Gradle Plugin caches
+.intellijPlatform/
+
+# Kotlin compilation cache
+.kotlin/
+
+# OS
+.DS_Store

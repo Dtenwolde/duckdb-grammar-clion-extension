@@ -14,7 +14,7 @@
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.cidr.lang</depends>
+    <depends optional="true" config-file="cidr-optional.xml">com.intellij.cidr.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
 
@@ -55,11 +55,6 @@
         <codeInsight.lineMarkerProvider
             language="DuckDBGrammar"
             implementationClass="com.duckdb.gram.navigation.GramGutterIconProvider"/>
-
-        <!-- Transformer → Grammar gutter icon (CLion uses ObjectiveC language ID for C/C++) -->
-        <codeInsight.lineMarkerProvider
-            language="ObjectiveC"
-            implementationClass="com.duckdb.gram.navigation.CppTransformerGutterIconProvider"/>
 
     </extensions>
 </idea-plugin>

@@ -123,12 +123,20 @@ class GramLexer : LexerBase() {
 
         when (parseState) {
             S_RULE_NAME -> {
-                val start = pos
-                if (ch(pos) == '%') pos++
-                while (pos < bufferEnd && isAlphaNumeric(ch(pos))) pos++
-                tokenEnd = pos
-                tokenType = GramTokenTypes.RULE_NAME
-                packedState = encodeState(S_RULE_SEPARATOR, 0, false)
+                if (c == '/') {
+                    // Leading '/' on a continuation line (alternative on a new line).
+                    // Treat it as a choice operator and re-enter RULE_DEFINITION.
+                    pos++
+                    tokenEnd = pos
+                    tokenType = GramTokenTypes.CHOICE
+                    packedState = encodeState(S_RULE_DEFINITION, 0, true)
+                } else {
+                    if (ch(pos) == '%') pos++
+                    while (pos < bufferEnd && isAlphaNumeric(ch(pos))) pos++
+                    tokenEnd = pos
+                    tokenType = GramTokenTypes.RULE_NAME
+                    packedState = encodeState(S_RULE_SEPARATOR, 0, false)
+                }
             }
 
             S_RULE_SEPARATOR -> {

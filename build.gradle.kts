@@ -20,7 +20,9 @@ dependencies {
         clion(providers.gradleProperty("platformVersion").get())
         bundledPlugin("com.intellij.cidr.lang")
         instrumentationTools()
+        testFramework(TestFrameworkType.Platform)
     }
+    testImplementation("junit:junit:4.13.2")
 }
 
 kotlin {
