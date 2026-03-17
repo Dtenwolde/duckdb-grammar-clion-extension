@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.duckdb.gram</id>
     <name>DuckDB Grammar Support</name>
-    <version>1.0.0</version>
+    <version>1.6.0</version>
     <vendor>DuckDB</vendor>
 
     <description><![CDATA[
@@ -14,7 +14,6 @@
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends optional="true" config-file="cidr-optional.xml">com.intellij.cidr.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
 
@@ -47,14 +46,39 @@
         <fileBasedIndex
             implementation="com.duckdb.gram.index.GramRuleNameIndex"/>
 
+        <fileBasedIndex
+            implementation="com.duckdb.gram.index.TransformerMethodIndex"/>
+
         <lang.findUsagesProvider
             language="DuckDBGrammar"
             implementationClass="com.duckdb.gram.usage.GramFindUsagesProvider"/>
+
+        <!-- Code folding for multi-line rule bodies -->
+        <lang.foldingBuilder
+            language="DuckDBGrammar"
+            implementationClass="com.duckdb.gram.folding.GramFoldingBuilder"/>
+
+        <!-- Commenter (Cmd+/ inserts # comments) -->
+        <lang.commenter
+            language="DuckDBGrammar"
+            implementationClass="com.duckdb.gram.highlighting.GramCommenter"/>
+
+        <!-- Structure view (Cmd+7 shows all grammar rules) -->
+        <lang.psiStructureViewFactory
+            language="DuckDBGrammar"
+            implementationClass="com.duckdb.gram.structure.GramStructureViewFactory"/>
 
         <!-- Grammar → Transformer gutter icon -->
         <codeInsight.lineMarkerProvider
             language="DuckDBGrammar"
             implementationClass="com.duckdb.gram.navigation.GramGutterIconProvider"/>
+
+        <!-- Transformer → Grammar gutter icon.
+             No language filter: in CLion Nova the Classic C++ Engine is disabled so OCLanguage
+             is not registered; the provider guards itself with a transform_*.cpp filename check. -->
+        <codeInsight.lineMarkerProvider
+            language=""
+            implementationClass="com.duckdb.gram.navigation.CppTransformerGutterIconProvider"/>
 
     </extensions>
 </idea-plugin>

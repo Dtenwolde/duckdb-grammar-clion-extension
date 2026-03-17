@@ -1,15 +1,14 @@
 package com.duckdb.gram.navigation
 
 import com.duckdb.gram.icons.GramIcons
+import com.duckdb.gram.index.TransformerMethodIndex
 import com.duckdb.gram.lexer.GramTokenTypes
 import com.intellij.codeInsight.daemon.RelatedItemLineMarkerInfo
 import com.intellij.codeInsight.daemon.RelatedItemLineMarkerProvider
 import com.intellij.codeInsight.navigation.NavigationGutterIconBuilder
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
-import com.intellij.psi.search.FilenameIndex
 import com.intellij.psi.search.GlobalSearchScope
 
 /**
@@ -41,40 +40,16 @@ class GramGutterIconProvider : RelatedItemLineMarkerProvider() {
     }
 
     companion object {
-        private val REGISTER_TRANSFORM_PATTERN = Regex("""REGISTER_TRANSFORM\(Transform([A-Za-z0-9]+)\)""")
-        private val METHOD_PATTERN_PREFIX = "PEGTransformerFactory::Transform"
-
         fun findTransformerElements(project: Project, ruleName: String): List<PsiElement> {
             val scope = GlobalSearchScope.projectScope(project)
             val psiManager = PsiManager.getInstance(project)
+            val methodSignature = "PEGTransformerFactory::Transform$ruleName("
 
-            // 1. Check that a transformer is registered for this rule
-            val factoryFiles = FilenameIndex.getVirtualFilesByName(
-                "peg_transformer_factory.cpp", scope
-            )
-            val registered = factoryFiles.any { vFile ->
-                val text = String(vFile.contentsToByteArray())
-                REGISTER_TRANSFORM_PATTERN.containsMatchIn(text) &&
-                    text.contains("REGISTER_TRANSFORM(Transform$ruleName)")
+            return TransformerMethodIndex.getFiles(ruleName, project, scope).mapNotNull { vFile ->
+                val psiFile = psiManager.findFile(vFile) ?: return@mapNotNull null
+                val idx = psiFile.text.indexOf(methodSignature)
+                if (idx < 0) null else psiFile.findElementAt(idx)
             }
-            if (!registered) return emptyList()
-
-            // 2. Find the method definition in transform_*.cpp
-            val results = mutableListOf<PsiElement>()
-            val methodSignature = "$METHOD_PATTERN_PREFIX$ruleName("
-
-            val allVirtualFiles = FilenameIndex.getAllFilesByExt(project, "cpp", scope)
-            for (vFile in allVirtualFiles) {
-                if (!vFile.name.startsWith("transform_")) continue
-                val text = String(vFile.contentsToByteArray())
-                val idx = text.indexOf(methodSignature)
-                if (idx < 0) continue
-
-                val psiFile = psiManager.findFile(vFile) ?: continue
-                val element = psiFile.findElementAt(idx)
-                if (element != null) results.add(element)
-            }
-            return results
         }
     }
 }

@@ -1,8 +1,0 @@
-<idea-plugin>
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Transformer → Grammar gutter icon (CLion uses ObjectiveC language ID for C/C++) -->
-        <codeInsight.lineMarkerProvider
-            language="ObjectiveC"
-            implementationClass="com.duckdb.gram.navigation.CppTransformerGutterIconProvider"/>
-    </extensions>
-</idea-plugin>

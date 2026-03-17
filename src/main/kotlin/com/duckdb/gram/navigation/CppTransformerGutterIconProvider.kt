@@ -19,9 +19,7 @@ import com.intellij.psi.util.PsiTreeUtil
  */
 class CppTransformerGutterIconProvider : RelatedItemLineMarkerProvider() {
 
-    private val methodPattern = Regex(
-        """PEGTransformerFactory::Transform([A-Z][A-Za-z0-9]*)\s*\("""
-    )
+    private val transformMethodPattern = Regex("""Transform([A-Z][A-Za-z0-9]*)""")
 
     override fun collectNavigationMarkers(
         element: PsiElement,
@@ -30,13 +28,18 @@ class CppTransformerGutterIconProvider : RelatedItemLineMarkerProvider() {
         val file = element.containingFile ?: return
         if (!file.name.startsWith("transform_") || !file.name.endsWith(".cpp")) return
 
-        // Only trigger on leaf elements starting with "Transform"
+        // Only trigger on leaf elements matching Transform<RuleName>
         if (!element.text.startsWith("Transform")) return
         if (element.children.isNotEmpty()) return  // must be a leaf
+        val match = transformMethodPattern.matchEntire(element.text) ?: return
 
-        // Check parent text for the full method pattern
-        val parentText = element.parent?.text ?: return
-        val match = methodPattern.find(parentText) ?: return
+        // Confirm this is a PEGTransformerFactory definition, not an arbitrary reference.
+        // In a fully-configured CMake project the parent is an OCQualifiedReferenceExpression
+        // with text "PEGTransformerFactory::TransformXxx" (no parenthesis), so we just check
+        // for the class qualifier rather than requiring "(" in the same node.
+        val parent = element.parent ?: return
+        if (!parent.text.contains("PEGTransformerFactory::")) return
+
         val ruleName = match.groupValues[1]
 
         val project = element.project

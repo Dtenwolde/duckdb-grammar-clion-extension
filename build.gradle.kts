@@ -18,7 +18,6 @@ repositories {
 dependencies {
     intellijPlatform {
         clion(providers.gradleProperty("platformVersion").get())
-        bundledPlugin("com.intellij.cidr.lang")
         instrumentationTools()
         testFramework(TestFrameworkType.Platform)
     }
@@ -33,6 +32,10 @@ intellijPlatform {
     pluginConfiguration {
         name = providers.gradleProperty("pluginName")
         version = providers.gradleProperty("pluginVersion")
+        ideaVersion {
+            sinceBuild = "243"     // CLion 2024.3
+            untilBuild = "253.*"   // CLion 2025.3
+        }
     }
     buildSearchableOptions = false
 
